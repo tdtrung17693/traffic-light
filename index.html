@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Programming Pattern</title>
+    <link rel="stylesheet" href="./assets/fonts/fonts.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+<body>
+    <div class="ampel-app">
+        <div class="ampel-inner">
+            <div class="ampel-counter">--</div>
+            <div class="ampel">
+            </div>
+        </div>
+    </div>
+    <button class="next-state-btn">Next State</button>
+
+    <script type="module">
+        import Ampel from './assets/js/ampel.mjs'
+        import Counter from './assets/js/counter.mjs'
+        import DOMPresenter from './assets/js/domPresenter.mjs'
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const app = document.querySelector('.ampel')
+            const ampelCounter = document.querySelector('.ampel-counter')
+            const presenter = new DOMPresenter(app)
+            const counter = new Counter()
+
+            counter.setTickCallback(count => {
+                ampelCounter.innerText = count
+            })
+
+            const ampel = new Ampel(presenter, counter)
+            const nextBtn = document.querySelector('.next-state-btn')
+
+            ampel.turnOn()
+
+            nextBtn.addEventListener('click', () => {
+                ampel.nextState()
+            })
+        })
+    </script>
+</body>
+</html>

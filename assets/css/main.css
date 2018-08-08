@@ -1,0 +1,136 @@
+:root {
+  --main-bg-color: #3C4EAD;
+  --counter-bg-color: #181b1d;
+  --counter-text-color: #8fa2af;
+  --ampel-border-color: #28363e;
+  --ampel-bg-color: #1F262A;
+  --shine-color: #ffffff52;
+  --default-light: #616161;
+  --red: #D23727;
+  --yellow: #F9A31B;
+  --green: #85A03A;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.next-state-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 15px;
+    padding: 15px 25px;
+    background: transparent;
+    border: 3px solid #fff;
+    transition: background 0.2s;
+    cursor: pointer;
+    outline: 0 none;
+}
+
+.next-state-btn:hover {
+    background: #fff;
+    color: #3c4ead;
+}
+
+.next-state-btn:active {
+    background: #4e4e4e;
+    border-color: #4e4e4e;
+    color: #fff;
+}
+
+.ampel-app {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    background-color: var(--main-bg-color);
+}
+
+.ampel-inner {
+    display: flex;
+    height: 290px;
+    width: 100px;
+    padding: 20px;
+    border: 5px solid var(--ampel-border-color);
+    margin-top: 30px;
+    flex-direction: column;
+    background-color: var(--ampel-bg-color);
+}
+
+.ampel-counter {
+    margin: 0 -19px;
+    margin-bottom: 15px;
+    margin-top: -20px;
+    padding: 5px 10px;
+    text-align: center;
+    background: var(--counter-bg-color);
+    color: var(--counter-text-color);
+    font-family: 'DS-Digital';
+    font-size: 45px;
+}
+
+.ampel-light,
+.ampel {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.ampel-light > div {
+    display: flex;
+    margin: 5px -2px;
+    position: relative;
+    flex: 1;
+    background: var(--default-light);
+    border-radius: 50%;
+}
+
+.ampel-light > div:after {
+    content: " ";
+    display: block;
+    border: 7px solid var(--shine-color);
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    left: 0;
+    right: 5px;
+}
+
+.is-state-red .red-light {
+    background-color: var(--red);
+    box-shadow: 0 0 25px 0 var(--red);
+}
+
+.is-state-yellow .yellow-light {
+    background-color: var(--yellow);
+    box-shadow: 0 0 25px 0 var(--yellow);
+}
+
+.is-state-green .green-light {
+    background-color:  var(--green);
+    box-shadow: 0 0 25px 0  var(--green);
+}
+
+.log > * {
+    display: block;
+}
